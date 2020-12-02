@@ -6,20 +6,30 @@
 # Full path to current directory
 CURRENT_DIR="$( cd "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 
+# urlwatch urls config
+URLS_CONFIG="${CURRENT_DIR}/urls.yaml"
+
 # Path to destination config file
 DESTINATION_CONFIG_FILENAME="${CURRENT_DIR}/config.yaml"
 
 # Interval to poll urlwatcher
 POLL_INTERVAL_SECONDS=15
 
+# Clear the urlwatch cache
+urlwatch --gc-cache
+
+# Make an initial call to urlwatch before polling/setting up notifications. This is to combat
+# notifying users upon new deployments.
+urlwatch --urls "${URLS_CONFIG}"
+
 # Write config contents to destination file
 # Explicitly write each line to avoid newline character issues
-echo "report:                            " > ${DESTINATION_CONFIG_FILENAME}
-echo "  slack:                           " >> ${DESTINATION_CONFIG_FILENAME}
-echo "    enabled: true                  " >> ${DESTINATION_CONFIG_FILENAME}
-echo "    webhook_url: '${SLACK_WEBHOOK}'" >> ${DESTINATION_CONFIG_FILENAME}
+echo "report:                            " > ${URLWATCH_CONFIG}
+echo "  slack:                           " >> ${URLWATCH_CONFIG}
+echo "    enabled: true                  " >> ${URLWATCH_CONFIG}
+echo "    webhook_url: '${SLACK_WEBHOOK}'" >> ${URLWATCH_CONFIG}
 
 while true; do
-  urlwatch --urls "${CURRENT_DIR}/urls.yaml" --config "${CURRENT_DIR}/config.yaml" 
+  urlwatch --urls "${URLS_CONFIG}" --config "${URLWATCH_CONFIG}" 
   sleep ${POLL_INTERVAL_SECONDS}
 done
