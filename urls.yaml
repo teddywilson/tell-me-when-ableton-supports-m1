@@ -1,0 +1,4 @@
+name: "Ableton Mac OSX compatibility article"
+url: "https://help.ableton.com/hc/en-us/articles/115001261150-MacOS-Compatibility-with-Live"
+filter:
+  - element-by-class: "content-wrapper"
