@@ -25,4 +25,5 @@ Docker run --env SLACK_WEBHOOK=(your webhook) ableton-m1
 ## Help me make this better?
 - [ ] Create a simple website that points people to the Slack.
 - [ ] Improve caching - though, who cares?
-- [ ] Only notify when M1 is actually supported.
+- [ ] Only notify when M1 is actually supported - though, who cares?
+- [ ] Clean up health_check.py - though who cares?
