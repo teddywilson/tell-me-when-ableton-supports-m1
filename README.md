@@ -5,9 +5,21 @@ This is a simple script that leverages [urlwatch](https://github.com/thp/urlwatc
 
 Join the Slack channel [here](https://join.slack.com/t/whenwillablet-ycw5231/shared_invite/zt-jocb73s5-yHclBv7lXPNNS8v2cvkKdQ) to get notified!
 
-That said, this isn't perfect. Help me make this better?
+## Usage
+
+### Without Docker
+```
+export SLACK_WEBHOOK=(your webhook)
+pip3 install -r requirements.txt
+./watch.sh
+```
+
+### With Docker
+```
+Docker build -t ableton-m1 .
+Docker run --env SLACK_WEBHOOK=(your webhook) ableton-m1
+```
+
+## Help me make this better?
 - [ ] Create a simple website that points people to the Slack.
-- [ ] Set up an actual cache that is decoupled from deployments. Currently any time a new version
-      is deployed, a new urlwatch cache is initial, thus notifying us. I'm currently bypassing this
-      by making an initial call to urlwatch before passing it the Slack config, but this isn't
-      perfect.
+- [ ] Improve caching - though, who cares?

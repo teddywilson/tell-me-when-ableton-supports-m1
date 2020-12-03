@@ -3,6 +3,12 @@
 # Simple script that leverages urlwatcher to poll the Ableton Mac OSX compatibility article
 # If a change is detected, a notification will be posted to the community Slack channel
 
+# Validate environment variables
+if [[ -z "${DEPLOY_ENV}" ]]; then
+  echo "SLACK_WEBHOOK environment variable must be set"
+  exit 1
+fi
+
 # Full path to current directory
 CURRENT_DIR="$( cd "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 
@@ -10,7 +16,7 @@ CURRENT_DIR="$( cd "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 URLS_CONFIG="${CURRENT_DIR}/urls.yaml"
 
 # Path to destination config file
-DESTINATION_CONFIG_FILENAME="${CURRENT_DIR}/config.yaml"
+URLWATCH_CONFIG="${CURRENT_DIR}/config.yaml"
 
 # Interval to poll urlwatcher
 POLL_INTERVAL_SECONDS=15
@@ -30,6 +36,7 @@ echo "    enabled: true                  " >> ${URLWATCH_CONFIG}
 echo "    webhook_url: '${SLACK_WEBHOOK}'" >> ${URLWATCH_CONFIG}
 
 while true; do
+  echo "Polling..."
   urlwatch --urls "${URLS_CONFIG}" --config "${URLWATCH_CONFIG}" 
   sleep ${POLL_INTERVAL_SECONDS}
 done
