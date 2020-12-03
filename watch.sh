@@ -30,13 +30,12 @@ urlwatch --urls "${URLS_CONFIG}"
 
 # Write config contents to destination file
 # Explicitly write each line to avoid newline character issues
-echo "report:                            " > ${URLWATCH_CONFIG}
+echo "report:                            " >  ${URLWATCH_CONFIG}
 echo "  slack:                           " >> ${URLWATCH_CONFIG}
 echo "    enabled: true                  " >> ${URLWATCH_CONFIG}
 echo "    webhook_url: '${SLACK_WEBHOOK}'" >> ${URLWATCH_CONFIG}
 
 while true; do
-  echo "Polling..."
   urlwatch --urls "${URLS_CONFIG}" --config "${URLWATCH_CONFIG}" 
   sleep ${POLL_INTERVAL_SECONDS}
 done
