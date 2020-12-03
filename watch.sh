@@ -12,6 +12,9 @@ fi
 # Full path to current directory
 CURRENT_DIR="$( cd "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 
+# Start health check server so Cloud Run stays alive
+python "${CURRENT_DIR}/health_check.py" 
+
 # urlwatch urls config
 URLS_CONFIG="${CURRENT_DIR}/urls.yaml"
 
