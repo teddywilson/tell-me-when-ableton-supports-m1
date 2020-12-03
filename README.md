@@ -1,4 +1,4 @@
-# Tell me when ableton supports M1!
+# Tell me when Ableton supports M1!
 
 This is a simple utility that leverages [urlwatch](https://github.com/thp/urlwatch) to monitor changes to the
 [Ableton Mac OSX compatibility article](https://help.ableton.com/hc/en-us/articles/115001261150-Mac-Compatibility-with-Live).
