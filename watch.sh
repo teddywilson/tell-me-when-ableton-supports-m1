@@ -9,8 +9,6 @@ if [[ -z "${SLACK_WEBHOOK}" ]]; then
   exit 1
 fi
 
-echo "Tell me when Ableton supports M1! running..."
-
 # Full path to current directory
 CURRENT_DIR="$( cd "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 
@@ -40,6 +38,7 @@ echo "  slack:                           " >> ${URLWATCH_CONFIG}
 echo "    enabled: true                  " >> ${URLWATCH_CONFIG}
 echo "    webhook_url: '${SLACK_WEBHOOK}'" >> ${URLWATCH_CONFIG}
 
+# We are ready to begin polling
 while true; do
   urlwatch --urls "${URLS_CONFIG}" --config "${URLWATCH_CONFIG}" 
   sleep ${POLL_INTERVAL_SECONDS}
