@@ -26,8 +26,7 @@ urlwatch --gc-cache
 
 # Make an initial call to urlwatch before polling/setting up notifications. This is to combat
 # notifying users upon new deployments.
-#TODO(teddywilson) uncomment following line - this is a test
-#urlwatch --urls "${URLS_CONFIG}"
+urlwatch --urls "${URLS_CONFIG}"
 
 # Write config contents to destination file
 # Explicitly write each line to avoid newline character issues
