@@ -9,6 +9,8 @@ if [[ -z "${SLACK_WEBHOOK}" ]]; then
   exit 1
 fi
 
+echo "Tell me when Ableton supports M1! running..."
+
 # Full path to current directory
 CURRENT_DIR="$( cd "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 
