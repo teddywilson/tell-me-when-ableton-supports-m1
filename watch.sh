@@ -4,7 +4,7 @@
 # If a change is detected, a notification will be posted to the community Slack channel
 
 # Validate environment variables
-if [[ -z "${DEPLOY_ENV}" ]]; then
+if [[ -z "${SLACK_WEBHOOK}" ]]; then
   echo "SLACK_WEBHOOK environment variable must be set"
   exit 1
 fi
